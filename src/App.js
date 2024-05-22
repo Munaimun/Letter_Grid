@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
-function App() {
+const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+const App = () => {
+  const [outputString, setOutputString] = useState("");
+
+  const handleClick = (letter) => {
+    let newOutput = outputString + letter;
+
+    // Function to replace consecutive letters
+    const replaceConsecutiveLetters = (str) => {
+      return str.replace(/(\w)\1{2,}/g, (match) => "_".repeat(match.length));
+    };
+
+    newOutput = replaceConsecutiveLetters(newOutput);
+
+    setOutputString(newOutput);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="grid-container">
+        {alphabet.map((letter) => (
+          <div
+            key={letter}
+            className="tile"
+            onClick={() => handleClick(letter)}
+          >
+            {letter}
+          </div>
+        ))}
+      </div>
+      <div id="outputString">{outputString}</div>
     </div>
   );
-}
+};
 
 export default App;
