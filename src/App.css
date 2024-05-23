@@ -2,6 +2,21 @@
   text-align: center;
 }
 
+h5{
+  text-align: center;
+}
+
+.tasks{
+  display: flex;
+  flex-direction: column;
+}
+
+.lists{
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(6, 50px);

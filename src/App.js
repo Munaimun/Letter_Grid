@@ -20,20 +20,35 @@ const App = () => {
   };
 
   return (
-    <div className="App">
-      <div className="grid-container">
-        {alphabet.map((letter) => (
-          <div
-            key={letter}
-            className="tile"
-            onClick={() => handleClick(letter)}
-          >
-            {letter}
-          </div>
-        ))}
+    <>
+      <div className="tasks">
+        <h5>Tasks</h5>
+        <ol className="lists">
+          <li>
+            When a tile of letter is clicked, append the corresponding letter
+          </li>
+          <li>
+            If three consecutive letters sare the same, replace them with an
+            uderscore(_)
+          </li>
+        </ol>
       </div>
-      <div id="outputString">{outputString}</div>
-    </div>
+
+      <div className="App">
+        <div className="grid-container">
+          {alphabet.map((letter) => (
+            <div
+              key={letter}
+              className="tile"
+              onClick={() => handleClick(letter)}
+            >
+              {letter}
+            </div>
+          ))}
+        </div>
+        <div id="outputString">{outputString}</div>
+      </div>
+    </>
   );
 };
 
